@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vinicius Dugue — Graphics, ML, and Interactive Systems</title>
+<meta name="description" content="Personal portfolio of Vinicius Dugue: graphics programming, machine learning, generative agents, and interactive 3D." />
+<link rel="stylesheet" href="css/style.css" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+
+<nav class="top">
+  <div class="brand">vinicius<span class="dot">.</span>dugue</div>
+  <div class="links">
+    <a href="#about">about</a>
+    <a href="#projects">projects</a>
+    <a href="#contact">contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay">
+    <div class="eyebrow">word embeddings · in 3D</div>
+    <h1>Vinicius <span class="alt">Dugue</span></h1>
+    <p class="sub">Graphics programming, machine learning, and the geometry of meaning. The cluster behind this title is a hand-built embedding showing the classic <em>king − man + woman ≈ queen</em> analogy.</p>
+    <div class="hint">drag to rotate · auto-rotates when idle</div>
+  </div>
+</header>
+
+<section id="about">
+  <h2><span class="num">01.</span>About</h2>
+  <p class="lead">I build things at the intersection of graphics, simulation, and learning systems — from offline ray tracers to LLM-driven agents. This site is a living index of those experiments.</p>
+  <div class="about-grid">
+    <div>
+      <p>My background spans real-time graphics, physically based rendering, reinforcement learning, and interactive simulations in Unity. I'm drawn to projects where the underlying math becomes visible — where you can <em>see</em> a gradient, a light path, or a vector relationship.</p>
+      <p>Right now I'm focused on generative agents and the visual tools that make their behavior legible. The 3D embedding viewer above is a small example: instead of staring at a 300-dimensional vector, you can rotate the cluster and watch the analogy lines line up.</p>
+    </div>
+    <div class="skills">
+      <h3>STACK</h3>
+      <ul>
+        <li>C++ · CUDA · OpenGL</li>
+        <li>Unity · C# · Shaders</li>
+        <li>Python · PyTorch · NumPy</li>
+        <li>Three.js · WebGL</li>
+        <li>Reinforcement Learning</li>
+        <li>LLMs &amp; Agent Systems</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2><span class="num">02.</span>Projects</h2>
+  <p class="lead">Selected work — graphics engines, simulations, ML experiments, and interactive demos. Pulled from <a href="https://github.com/ViniciusDugue" target="_blank" rel="noopener">github.com/ViniciusDugue</a>.</p>
+
+  <div class="proj-grid">
+
+    <article class="proj featured">
+      <div class="top-row"><span class="tag web">Interactive</span></div>
+      <h3><a href="projects/embedding-viewer/index.html">3D Word Embedding Viewer</a></h3>
+      <p>The full version of the cluster you see in the hero. Six categories — royalty, fruits, animals, countries, vehicles, colors — with togglable analogy lines and a search-to-fly camera.</p>
+      <div class="lang"><span class="swatch" style="background:#73daca"></span>HTML · Three.js</div>
+    </article>
+
+    <article class="proj">
+      <div class="top-row"><span class="tag ml">ML / Agents</span></div>
+      <h3><a href="https://github.com/ViniciusDugue/Generative_Agents" target="_blank" rel="noopener">Generative Agents</a></h3>
+      <p>Simulating agent behavior using LLMs and reinforcement learning. Explores how language-model priors shape decision-making in a controlled environment.</p>
+      <div class="lang"><span class="swatch" style="background:#178600"></span>C#</div>
+    </article>
+
+    <article class="proj">
+      <div class="top-row"><span class="tag graphics">Graphics</span></div>
+      <h3><a href="https://github.com/ViniciusDugue/Ray-Tracing-Engine-from-Scratch" target="_blank" rel="noopener">Ray Tracing Engine</a></h3>
+      <p>An offline-rendered ray tracer built from scratch in C++. Implements primitives, materials, BVH acceleration, and physically based lighting.</p>
+      <div class="lang"><span class="swatch" style="background:#f34b7d"></span>C++</div>
+    </article>
+
+    <article class="proj">
+      <div class="top-row"><span class="tag game">Simulation</span></div>
+      <h3><a href="https://github.com/ViniciusDugue/Virtual-PT-Project" target="_blank" rel="noopener">Virtual PT</a></h3>
+      <p>A Unity project for simulating physical therapy exercises — movement tracking, posture feedback, and an interactive guided routine.</p>
+      <div class="lang"><span class="swatch" style="background:#178600"></span>Unity · C#</div>
+    </article>
+
+    <article class="proj">
+      <div class="top-row"><span class="tag graphics">Graphics</span></div>
+      <h3><a href="https://github.com/ViniciusDugue/Graphics-Programming-Projects" target="_blank" rel="noopener">Graphics Programming</a></h3>
+      <p>A growing collection of graphics experiments — shaders, post-processing, procedural generation, and rendering pipeline studies.</p>
+      <div class="lang"><span class="swatch" style="background:#178600"></span>Unity · HLSL</div>
+    </article>
+
+    <article class="proj">
+      <div class="top-row"><span class="tag game">Game</span></div>
+      <h3><a href="https://github.com/ViniciusDugue/I-Forgot-My-Sword" target="_blank" rel="noopener">I Forgot My Sword</a></h3>
+      <p>A Unity action game built around the premise of fighting without your primary weapon. Improvisational combat mechanics.</p>
+      <div class="lang"><span class="swatch" style="background:#178600"></span>Unity · C#</div>
+    </article>
+
+    <article class="proj">
+      <div class="top-row"><span class="tag game">Game</span></div>
+      <h3><a href="https://github.com/ViniciusDugue/Bounce-Unity-Game" target="_blank" rel="noopener">Bounce</a></h3>
+      <p>A physics-driven Unity game project exploring momentum, elasticity, and emergent puzzle design.</p>
+      <div class="lang"><span class="swatch" style="background:#178600"></span>Unity · C#</div>
+    </article>
+
+    <article class="proj">
+      <div class="top-row"><span class="tag ml">ML</span></div>
+      <h3><a href="https://github.com/ViniciusDugue/Titanic-Model-Kaggle-Competition-" target="_blank" rel="noopener">Titanic ML Model</a></h3>
+      <p>A beginner machine-learning model predicting survival on the Titanic — feature engineering, model comparison, and Kaggle submission.</p>
+      <div class="lang"><span class="swatch" style="background:#3572A5"></span>Python</div>
+    </article>
+
+    <article class="proj">
+      <div class="top-row"><span class="tag ml">Bot</span></div>
+      <h3><a href="https://github.com/ViniciusDugue/SmilingFriendsBot-Project" target="_blank" rel="noopener">Smiling Friends Bot</a></h3>
+      <p>A Python bot project — automation and scripting around the Smiling Friends fandom community.</p>
+      <div class="lang"><span class="swatch" style="background:#3572A5"></span>Python</div>
+    </article>
+
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2><span class="num">03.</span>Get in touch</h2>
+  <p class="lead">Open to collaborations on graphics, simulation, and agent-based systems. Drop a line.</p>
+  <div class="links">
+    <a href="mailto:viniciusdugue08@gmail.com">email</a>
+    <a href="https://github.com/ViniciusDugue" target="_blank" rel="noopener">github</a>
+    <a href="projects/embedding-viewer/index.html">play with the viewer ↗</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Vinicius Dugue · built with three.js
+</footer>
+
+<script type="module" src="js/hero.js"></script>
+</body>
+</html>
