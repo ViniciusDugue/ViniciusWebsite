@@ -247,10 +247,23 @@ nav.top .brand .dot { color: var(--magenta); }
   border-radius: 8px;
   overflow: hidden;
 }
+.poster-figure a { display: block; line-height: 0; transition: filter .25s; }
+.poster-figure a:hover { filter: brightness(1.05); }
 .poster-figure img {
   width: 100%;
   display: block;
+  background: #fff;
 }
+.poster-figure figcaption {
+  padding: 14px 18px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  background: var(--panel-2);
+}
+.poster-figure figcaption strong { color: var(--text); font-weight: 700; }
+.poster-figure figcaption em { color: var(--cyan-hot); font-style: italic; }
 .poster-placeholder {
   padding: 32px 24px;
   text-align: center;
