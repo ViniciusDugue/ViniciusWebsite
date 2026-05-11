@@ -37,7 +37,7 @@
         <h2>About the project</h2>
         <p>The <strong>Kilter Board</strong> is an LED-lit climbing wall with hundreds of holds — climbers pick a route, the board lights up the relevant holds in colors (start, foot, hand, top), and the climber sends. There are tens of thousands of community-shared routes, but generating <em>new</em> ones is still done by hand.</p>
         <p><strong>Kilter AI</strong> learns to do this automatically. Given the board layout, a target difficulty, and the wall angle, it generates a brand-new climbing route by predicting which holds to light up and in what role (hand, foot, start, finish).</p>
-        <p>To train it, I built a scraper that pulls real climbs from the Kilter Board mobile app, processes the LED state into a structured dataset, and feeds it through a stack of recurrent models — eventually settling on a multi-task RNN that predicts hold position <em>and</em> hold role jointly. Side experiments include a Markov chain and a VAE for comparison.</p>
+        <p>To train it, we built a scraper that pulls real climbs from the Kilter Board mobile app, processes the LED state into a structured dataset, and feeds it through a stack of recurrent models — eventually settling on a multi-task RNN that predicts hold position <em>and</em> hold role jointly. Side experiments include a Markov chain and a VAE for comparison. Work done with <strong>Dr. Amir Ghasemkhani</strong> at CSULB.</p>
       </section>
 
       <section class="meta-grid">
