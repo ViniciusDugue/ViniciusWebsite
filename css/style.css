@@ -48,51 +48,62 @@ nav.top .links a:hover { color: var(--text); }
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 110px 24px 40px;
+  box-sizing: border-box;
   overflow: hidden;
 }
-#hero-canvas {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-}
-.hero-overlay {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
+.hero-text {
   text-align: center;
-  pointer-events: none;
-  padding: 0 24px;
+  max-width: 720px;
+  margin-bottom: 28px;
 }
-.hero-overlay .eyebrow {
+.hero-text .eyebrow {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 12px; letter-spacing: 3px; color: var(--pink);
   text-transform: uppercase;
-  margin-bottom: 18px;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  margin-bottom: 16px;
 }
-.hero-overlay h1 {
-  font-size: clamp(48px, 9vw, 120px);
+.hero-text h1 {
+  font-size: clamp(44px, 7.5vw, 96px);
   margin: 0;
   font-weight: 700;
   letter-spacing: -2px;
   line-height: 1;
-  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.7);
 }
-.hero-overlay h1 .alt { color: var(--accent); }
-.hero-overlay .sub {
-  margin-top: 18px;
-  font-size: clamp(14px, 1.5vw, 18px);
+.hero-text h1 .alt { color: var(--accent); }
+.hero-text .sub {
+  margin: 16px auto 0;
+  font-size: clamp(14px, 1.4vw, 17px);
   color: var(--muted);
-  max-width: 580px;
-  text-shadow: 0 1px 10px rgba(0,0,0,0.7);
+  max-width: 560px;
+  line-height: 1.55;
 }
-.hero-overlay .hint {
-  position: absolute; bottom: 28px;
-  font-size: 11px; color: var(--dim);
+.hero-viewer {
+  position: relative;
+  width: min(880px, 95%);
+  height: clamp(320px, 48vh, 480px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #080a0f;
+  overflow: hidden;
+}
+#hero-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  display: block;
+}
+.hero-viewer .hint {
+  position: absolute; bottom: 12px; right: 14px;
+  font-size: 10px; color: var(--dim);
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   letter-spacing: 1px;
   pointer-events: none;
 }
-.hero-overlay .hint::before {
+.hero-viewer .hint::before {
   content: "↻ "; color: var(--pink);
 }
 

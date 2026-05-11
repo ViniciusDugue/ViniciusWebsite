@@ -23,17 +23,24 @@ const PAIRS = [
 
 // ---------- Scene setup ----------
 const canvas = document.getElementById('hero-canvas');
+const container = canvas.parentElement;
+const getSize = () => ({
+  w: container.clientWidth,
+  h: container.clientHeight,
+});
+
 const scene = new THREE.Scene();
 scene.background = null;
-scene.fog = new THREE.Fog(0x0b0d12, 8, 22);
+scene.fog = new THREE.Fog(0x080a0f, 8, 22);
 
-const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
+const { w: w0, h: h0 } = getSize();
+const camera = new THREE.PerspectiveCamera(55, w0 / h0, 0.1, 100);
 camera.position.set(6, 3.5, 7.5);
 
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x0b0d12, 1);
+renderer.setSize(w0, h0, false);
+renderer.setClearColor(0x080a0f, 1);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -120,9 +127,10 @@ for (const [a, b] of PAIRS) {
 
 // ---------- Resize & loop ----------
 function onResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  const { w, h } = getSize();
+  camera.aspect = w / h;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(w, h, false);
 }
 window.addEventListener('resize', onResize);
 
