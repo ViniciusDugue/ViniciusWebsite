@@ -129,10 +129,31 @@ section .lead {
 
 /* ---------- About ---------- */
 .about-grid {
-  display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px;
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px;
   align-items: start;
 }
-.about-grid p { font-size: 15px; line-height: 1.7; color: #cdd3df; margin: 0 0 16px; }
+.about-grid p { font-size: 15px; line-height: 1.7; color: #cdd3df; margin: 0 0 14px; }
+.about-grid p.lead {
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.bio {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.bio .headshot {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 0 4px rgba(122, 162, 247, 0.08), 0 8px 24px rgba(0, 0, 0, 0.4);
+  display: block;
+}
 .about-grid .skills {
   background: var(--bg-2);
   border: 1px solid var(--border);
@@ -150,6 +171,8 @@ section .lead {
 
 @media (max-width: 720px) {
   .about-grid { grid-template-columns: 1fr; }
+  .bio { grid-template-columns: 90px 1fr; gap: 16px; }
+  .bio .headshot { width: 90px; height: 90px; }
 }
 
 /* ---------- Projects ---------- */
