@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Vinicius Dugue — Graphics, ML, and Interactive Systems</title>
 <meta name="description" content="Personal portfolio of Vinicius Dugue: graphics programming, machine learning, generative agents, and interactive 3D." />
-<link rel="stylesheet" href="css/style.css?v=3" />
+<link rel="stylesheet" href="css/style.css?v=4" />
 <script type="importmap">
 {
   "imports": {
@@ -66,75 +66,89 @@
 
   <div class="proj-grid">
 
-    <article class="proj featured">
-      <div class="top-row"><span class="tag game">Game</span></div>
-      <h3><a href="projects/heart-of-the-circus/index.html">Heart of the Circus</a></h3>
-      <p>A bullet-hell tower defense inspired by <em>Knights in the Nightmare</em>. Place towers, dodge screen-wide attack patterns, and keep the cursed Caravan's Heart beating through 17 escalating rounds.</p>
-      <div class="lang"><span class="swatch" style="background:#e94560"></span>Unity · Pixel Art · Solo dev</div>
-    </article>
+    <a class="proj-card" href="projects/heart-of-the-circus/index.html">
+      <div class="proj-thumb" style="background-image: url('https://img.itch.zone/aW1hZ2UvMzU0NTkzNC8yMTM2MDU0NC5wbmc=/original/ffSOIh.png');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">Game · Bullet-Hell TD</span>
+        <h3>Heart of the Circus</h3>
+      </div>
+    </a>
 
-    <article class="proj featured">
-      <div class="top-row"><span class="tag web">Interactive</span></div>
-      <h3><a href="projects/embedding-viewer/index.html">3D Word Embedding Viewer</a></h3>
-      <p>The full version of the cluster you see in the hero. Six categories — royalty, fruits, animals, countries, vehicles, colors — with togglable analogy lines and a search-to-fly camera.</p>
-      <div class="lang"><span class="swatch" style="background:#73daca"></span>HTML · Three.js</div>
-    </article>
+    <a class="proj-card" href="projects/embedding-viewer/index.html">
+      <div class="proj-thumb proj-thumb--embed">
+        <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+        <span class="dot d4"></span><span class="dot d5"></span><span class="dot d6"></span>
+        <span class="dot d7"></span><span class="dot d8"></span>
+      </div>
+      <div class="proj-info">
+        <span class="proj-tagline">Interactive · Three.js</span>
+        <h3>3D Word Embedding Viewer</h3>
+      </div>
+    </a>
 
-    <article class="proj">
-      <div class="top-row"><span class="tag ml">ML / Agents</span></div>
-      <h3><a href="https://github.com/ViniciusDugue/Generative_Agents" target="_blank" rel="noopener">Generative Agents</a></h3>
-      <p>Simulating agent behavior using LLMs and reinforcement learning. Explores how language-model priors shape decision-making in a controlled environment.</p>
-      <div class="lang"><span class="swatch" style="background:#178600"></span>C#</div>
-    </article>
+    <a class="proj-card" href="https://github.com/ViniciusDugue/Generative_Agents" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('https://opengraph.githubassets.com/1/ViniciusDugue/Generative_Agents');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">ML / Agents · C#</span>
+        <h3>Generative Agents</h3>
+      </div>
+    </a>
 
-    <article class="proj">
-      <div class="top-row"><span class="tag graphics">Graphics</span></div>
-      <h3><a href="https://github.com/ViniciusDugue/Ray-Tracing-Engine-from-Scratch" target="_blank" rel="noopener">Ray Tracing Engine</a></h3>
-      <p>An offline-rendered ray tracer built from scratch in C++. Implements primitives, materials, BVH acceleration, and physically based lighting.</p>
-      <div class="lang"><span class="swatch" style="background:#f34b7d"></span>C++</div>
-    </article>
+    <a class="proj-card" href="https://github.com/ViniciusDugue/Ray-Tracing-Engine-from-Scratch" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('https://opengraph.githubassets.com/1/ViniciusDugue/Ray-Tracing-Engine-from-Scratch');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">Graphics · C++</span>
+        <h3>Ray Tracing Engine</h3>
+      </div>
+    </a>
 
-    <article class="proj">
-      <div class="top-row"><span class="tag game">Simulation</span></div>
-      <h3><a href="https://github.com/ViniciusDugue/Virtual-PT-Project" target="_blank" rel="noopener">Virtual PT</a></h3>
-      <p>A Unity project for simulating physical therapy exercises — movement tracking, posture feedback, and an interactive guided routine.</p>
-      <div class="lang"><span class="swatch" style="background:#178600"></span>Unity · C#</div>
-    </article>
+    <a class="proj-card" href="https://github.com/ViniciusDugue/Virtual-PT-Project" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('https://opengraph.githubassets.com/1/ViniciusDugue/Virtual-PT-Project');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">Simulation · Unity</span>
+        <h3>Virtual PT</h3>
+      </div>
+    </a>
 
-    <article class="proj">
-      <div class="top-row"><span class="tag graphics">Graphics</span></div>
-      <h3><a href="https://github.com/ViniciusDugue/Graphics-Programming-Projects" target="_blank" rel="noopener">Graphics Programming</a></h3>
-      <p>A growing collection of graphics experiments — shaders, post-processing, procedural generation, and rendering pipeline studies.</p>
-      <div class="lang"><span class="swatch" style="background:#178600"></span>Unity · HLSL</div>
-    </article>
+    <a class="proj-card" href="https://github.com/ViniciusDugue/Graphics-Programming-Projects" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('https://opengraph.githubassets.com/1/ViniciusDugue/Graphics-Programming-Projects');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">Graphics · HLSL</span>
+        <h3>Graphics Programming</h3>
+      </div>
+    </a>
 
-    <article class="proj">
-      <div class="top-row"><span class="tag game">Game</span></div>
-      <h3><a href="https://github.com/ViniciusDugue/I-Forgot-My-Sword" target="_blank" rel="noopener">I Forgot My Sword</a></h3>
-      <p>A Unity action game built around the premise of fighting without your primary weapon. Improvisational combat mechanics.</p>
-      <div class="lang"><span class="swatch" style="background:#178600"></span>Unity · C#</div>
-    </article>
+    <a class="proj-card" href="https://github.com/ViniciusDugue/I-Forgot-My-Sword" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('https://opengraph.githubassets.com/1/ViniciusDugue/I-Forgot-My-Sword');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">Game · Unity</span>
+        <h3>I Forgot My Sword</h3>
+      </div>
+    </a>
 
-    <article class="proj">
-      <div class="top-row"><span class="tag game">Game</span></div>
-      <h3><a href="https://github.com/ViniciusDugue/Bounce-Unity-Game" target="_blank" rel="noopener">Bounce</a></h3>
-      <p>A physics-driven Unity game project exploring momentum, elasticity, and emergent puzzle design.</p>
-      <div class="lang"><span class="swatch" style="background:#178600"></span>Unity · C#</div>
-    </article>
+    <a class="proj-card" href="https://github.com/ViniciusDugue/Bounce-Unity-Game" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('https://opengraph.githubassets.com/1/ViniciusDugue/Bounce-Unity-Game');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">Game · Unity Physics</span>
+        <h3>Bounce</h3>
+      </div>
+    </a>
 
-    <article class="proj">
-      <div class="top-row"><span class="tag ml">ML</span></div>
-      <h3><a href="https://github.com/ViniciusDugue/Titanic-Model-Kaggle-Competition-" target="_blank" rel="noopener">Titanic ML Model</a></h3>
-      <p>A beginner machine-learning model predicting survival on the Titanic — feature engineering, model comparison, and Kaggle submission.</p>
-      <div class="lang"><span class="swatch" style="background:#3572A5"></span>Python</div>
-    </article>
+    <a class="proj-card" href="https://github.com/ViniciusDugue/Titanic-Model-Kaggle-Competition-" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('https://opengraph.githubassets.com/1/ViniciusDugue/Titanic-Model-Kaggle-Competition-');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">ML · Python</span>
+        <h3>Titanic ML Model</h3>
+      </div>
+    </a>
 
-    <article class="proj">
-      <div class="top-row"><span class="tag ml">Bot</span></div>
-      <h3><a href="https://github.com/ViniciusDugue/SmilingFriendsBot-Project" target="_blank" rel="noopener">Smiling Friends Bot</a></h3>
-      <p>A Python bot project — automation and scripting around the Smiling Friends fandom community.</p>
-      <div class="lang"><span class="swatch" style="background:#3572A5"></span>Python</div>
-    </article>
+    <a class="proj-card" href="https://github.com/ViniciusDugue/SmilingFriendsBot-Project" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('https://opengraph.githubassets.com/1/ViniciusDugue/SmilingFriendsBot-Project');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">Bot · Python</span>
+        <h3>Smiling Friends Bot</h3>
+      </div>
+    </a>
 
   </div>
 </section>
