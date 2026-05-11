@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ray Tracing Engine — Vinicius Dugue</title>
+<meta name="description" content="An offline ray tracer built from scratch in C++ following Peter Shirley's Ray Tracing in One Weekend — no graphics APIs, just math, vectors, and a PPM writer." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="top">
+  <a href="../../index.html" class="back">← back to portfolio</a>
+  <div class="brand">vinicius<span class="dot">.</span>dugue</div>
+</nav>
+
+<main class="page">
+
+  <header class="cover">
+    <div class="hero-art">
+      <img src="img/final-scene.png" alt="A ray-traced scene full of colorful spheres with a glass, diffuse, and metal sphere in the foreground" />
+    </div>
+    <div class="hero-text">
+      <span class="eyebrow">Graphics · C++ from scratch</span>
+      <h1>Ray Tracing<br/><span class="alt">Engine</span></h1>
+      <p class="tagline">An offline-rendered path tracer written in C++ with zero graphics APIs — just vectors, recursive ray bounces, and a PPM file at the end.</p>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <article class="content">
+
+      <section class="about">
+        <h2>About the engine</h2>
+        <p>This is a from-scratch implementation of a <strong>recursive path tracer</strong>, built while working through Peter Shirley's <em>Ray Tracing in One Weekend</em>. No OpenGL, no Vulkan, no precompiled libraries — every pixel is the result of a ray cast into the scene, bounced off surfaces according to material BRDFs, and accumulated over hundreds of samples.</p>
+        <p>The point wasn't to be fast. The point was to understand <em>what a graphics API is actually doing under the hood</em> — how rays are generated, how intersections are computed, how light scatters off different materials, why noise looks the way it does. By the end the engine renders the classic cover-image scene of the book: a sea of randomly placed spheres with glass, diffuse, and metal materials.</p>
+      </section>
+
+      <section class="meta-grid">
+        <div class="meta-card">
+          <h3>Language</h3>
+          <p>C++ (no third-party libs)</p>
+        </div>
+        <div class="meta-card">
+          <h3>Output</h3>
+          <p>PPM image · offline render</p>
+        </div>
+        <div class="meta-card">
+          <h3>Reference</h3>
+          <p>Ray Tracing in One Weekend</p>
+        </div>
+        <div class="meta-card">
+          <h3>Concepts</h3>
+          <p>BRDF · Snell · Schlick · Antialiasing</p>
+        </div>
+      </section>
+
+      <section class="features">
+        <h2>What it implements</h2>
+        <ul>
+          <li><strong>Ray generation.</strong> Pinhole camera with configurable position, target, up-vector, and vertical FOV.</li>
+          <li><strong>Sphere intersection.</strong> Closed-form quadratic solve for ray–sphere hits, sorted by distance.</li>
+          <li><strong>Antialiasing.</strong> Multiple jittered rays per pixel, averaged for clean edges and soft shadows.</li>
+          <li><strong>Diffuse (Lambertian).</strong> Random unit-sphere scattering — produces matte, color-tinted surfaces.</li>
+          <li><strong>Metal.</strong> Mirror reflection with optional fuzz factor; recovers reflective spheres with imperfect surfaces.</li>
+          <li><strong>Dielectric.</strong> Refraction via Snell's law + Schlick approximation for Fresnel — yields convincing glass.</li>
+          <li><strong>Defocus blur.</strong> Lens-aperture sampling for depth-of-field effects.</li>
+          <li><strong>Gamma correction.</strong> sRGB output mapping so the linear-space math actually looks right on a monitor.</li>
+        </ul>
+      </section>
+
+      <section class="gallery">
+        <h2>Progression</h2>
+        <p class="g-lead">Each render is a checkpoint from the book — feature added on the previous, until the engine could produce the final cover scene.</p>
+        <div class="grid">
+          <figure>
+            <a href="img/diffuse-metal.png" target="_blank" rel="noopener"><img src="img/diffuse-metal.png" alt="Three spheres with diffuse and metal materials" loading="lazy" /></a>
+            <figcaption>Diffuse + Metal</figcaption>
+          </figure>
+          <figure>
+            <a href="img/diffuse-metal-fuzz.png" target="_blank" rel="noopener"><img src="img/diffuse-metal-fuzz.png" alt="Metal spheres with added surface fuzz" loading="lazy" /></a>
+            <figcaption>Metal + Fuzz</figcaption>
+          </figure>
+          <figure>
+            <a href="img/dielectric-metal-diffuse.png" target="_blank" rel="noopener"><img src="img/dielectric-metal-diffuse.png" alt="Glass, diffuse, and metal spheres in a green field" loading="lazy" /></a>
+            <figcaption>Dielectric (Glass)</figcaption>
+          </figure>
+          <figure>
+            <a href="img/low-fov.png" target="_blank" rel="noopener"><img src="img/low-fov.png" alt="Low vertical FOV variant of the same scene" loading="lazy" /></a>
+            <figcaption>Low FOV</figcaption>
+          </figure>
+          <figure>
+            <a href="img/high-fov.png" target="_blank" rel="noopener"><img src="img/high-fov.png" alt="High vertical FOV variant" loading="lazy" /></a>
+            <figcaption>Wide FOV</figcaption>
+          </figure>
+          <figure>
+            <a href="img/defocus-blur.png" target="_blank" rel="noopener"><img src="img/defocus-blur.png" alt="Scene with defocus blur (depth of field)" loading="lazy" /></a>
+            <figcaption>Defocus Blur</figcaption>
+          </figure>
+        </div>
+      </section>
+
+    </article>
+
+    <aside class="sidebar">
+      <a class="play-btn" href="https://github.com/ViniciusDugue/Ray-Tracing-Engine-from-Scratch" target="_blank" rel="noopener">
+        <span class="big">View on GitHub</span>
+        <span class="small">↗ Ray-Tracing-Engine-from-Scratch</span>
+      </a>
+      <ul class="info">
+        <li><span>Language</span><b>C++</b></li>
+        <li><span>APIs used</span><b>None</b></li>
+        <li><span>Rendering</span><b>Offline / CPU</b></li>
+        <li><span>Output</span><b>.ppm</b></li>
+        <li><span>Reference</span><b>Shirley, RTIOW</b></li>
+      </ul>
+      <div class="tags">
+        <span>C++</span><span>Path Tracing</span><span>BRDF</span>
+        <span>Linear Algebra</span><span>Monte Carlo</span><span>Graphics</span>
+      </div>
+    </aside>
+
+  </div>
+
+</main>
+
+<footer>
+  © 2026 Vinicius Dugue · <a href="../../index.html">portfolio</a> · <a href="https://github.com/ViniciusDugue" target="_blank" rel="noopener">github</a>
+</footer>
+
+</body>
+</html>
