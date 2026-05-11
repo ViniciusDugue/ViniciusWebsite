@@ -48,25 +48,23 @@ nav.top .links a:hover { color: var(--text); }
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  min-height: 100vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 110px 24px 40px;
+  display: block;
+  padding: 120px 24px 60px;
   box-sizing: border-box;
-  overflow: hidden;
 }
 .hero-text {
   text-align: center;
   max-width: 720px;
-  margin-bottom: 28px;
+  margin: 0 auto 80px;
 }
-.hero-text .eyebrow {
+.viewer-eyebrow {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 14px;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 12px; letter-spacing: 3px; color: var(--pink);
   text-transform: uppercase;
-  margin-bottom: 16px;
 }
 .hero-text h1 {
   font-size: clamp(44px, 7.5vw, 96px);
@@ -85,8 +83,9 @@ nav.top .links a:hover { color: var(--text); }
 }
 .hero-viewer {
   position: relative;
-  width: min(880px, 95%);
-  height: clamp(320px, 48vh, 480px);
+  width: min(720px, 92%);
+  height: 360px;
+  margin: 0 auto;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: #080a0f;
