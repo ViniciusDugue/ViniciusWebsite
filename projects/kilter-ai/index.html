@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kilter AI — Vinicius Dugue</title>
+<meta name="description" content="An RNN that generates new climbing routes for the Kilter Board, trained on a dataset scraped from the official app." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="top">
+  <a href="../../index.html" class="back">← back to portfolio</a>
+  <div class="brand">vinicius<span class="dot">.</span>dugue</div>
+</nav>
+
+<main class="game">
+
+  <header class="cover">
+    <div class="cover-hero">
+      <div class="cover-art">
+        <img src="img/climb-1.png" alt="An AI-generated climbing route on the Kilter Board layout" />
+      </div>
+      <div class="cover-text">
+        <span class="award">★ Conference Submission · CSULB CECS</span>
+        <h1>Kilter <span class="alt">AI</span></h1>
+        <p class="tagline">An RNN that invents new climbing routes for the Kilter Board — trained on real climbs scraped from the official app.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <article class="content">
+
+      <section class="about">
+        <h2>About the project</h2>
+        <p>The <strong>Kilter Board</strong> is an LED-lit climbing wall with hundreds of holds — climbers pick a route, the board lights up the relevant holds in colors (start, foot, hand, top), and the climber sends. There are tens of thousands of community-shared routes, but generating <em>new</em> ones is still done by hand.</p>
+        <p><strong>Kilter AI</strong> learns to do this automatically. Given the board layout, a target difficulty, and the wall angle, it generates a brand-new climbing route by predicting which holds to light up and in what role (hand, foot, start, finish).</p>
+        <p>To train it, I built a scraper that pulls real climbs from the Kilter Board mobile app, processes the LED state into a structured dataset, and feeds it through a stack of recurrent models — eventually settling on a multi-task RNN that predicts hold position <em>and</em> hold role jointly. Side experiments include a Markov chain and a VAE for comparison.</p>
+      </section>
+
+      <section class="meta-grid">
+        <div class="meta-card">
+          <h3>Model</h3>
+          <p>Multi-task RNN · 4-way joint prediction</p>
+        </div>
+        <div class="meta-card">
+          <h3>Data</h3>
+          <p>Scraped from the Kilter Board app</p>
+        </div>
+        <div class="meta-card">
+          <h3>Variants</h3>
+          <p>RNN · MLP · Markov · VAE</p>
+        </div>
+        <div class="meta-card">
+          <h3>Stack</h3>
+          <p>Python · PyTorch · OpenCV</p>
+        </div>
+      </section>
+
+      <section class="how-it-works">
+        <h2>How it works</h2>
+        <ol>
+          <li>
+            <strong>Scrape.</strong> An image-based scraper drives the Kilter Board app, captures the rendered board for thousands of community climbs, and reads the per-hold LED color to recover <em>(row, column, role)</em> for every active hold.
+            <a class="show-img" data-img="img/scraper.png">[show scraper]</a>
+          </li>
+          <li>
+            <strong>Index the board.</strong> The physical layout of holds is mapped into a discrete grid so the model can predict "hold #157" instead of pixel coordinates.
+            <a class="show-img" data-img="img/board-setup.png">[show layout]</a>
+          </li>
+          <li>
+            <strong>Train.</strong> A stack of RNN variants (12 generations from <code>RNN1</code> to <code>RNN15</code>) — each iteration adds a prediction head: position → role → angle → sequence order. Loss is class-weighted to compensate for the heavy imbalance between hand and foot holds.
+          </li>
+          <li>
+            <strong>Sample.</strong> At inference the model emits a sequence of <em>(position, role)</em> pairs until the route closes on a top hold. The generator is conditioned on a target grade and wall angle.
+          </li>
+        </ol>
+      </section>
+
+      <section class="screens">
+        <h2>Generated climbs</h2>
+        <p class="screens-lead">Four routes the model produced. Cyan = handholds, magenta = top, orange = start, green = feet — matching the Kilter Board's own color convention.</p>
+        <div class="grid">
+          <a href="img/climb-1.png" target="_blank" rel="noopener"><img src="img/climb-1.png" alt="Generated climb 1" loading="lazy" /></a>
+          <a href="img/climb-5.png" target="_blank" rel="noopener"><img src="img/climb-5.png" alt="Generated climb 5" loading="lazy" /></a>
+          <a href="img/climb-8.png" target="_blank" rel="noopener"><img src="img/climb-8.png" alt="Generated climb 8" loading="lazy" /></a>
+          <a href="img/climb-14.png" target="_blank" rel="noopener"><img src="img/climb-14.png" alt="Generated climb 14" loading="lazy" /></a>
+        </div>
+      </section>
+
+      <section class="poster">
+        <h2>Conference poster</h2>
+        <figure class="poster-figure" id="poster-placeholder">
+          <div class="poster-placeholder">
+            <p><strong>Waiting on poster image.</strong></p>
+            <p>I can't reach Google Drive — drop the final poster PNG/JPG into <code>projects/kilter-ai/img/poster.jpg</code> (or paste it in chat) and I'll wire it up.</p>
+          </div>
+        </figure>
+      </section>
+
+    </article>
+
+    <aside class="sidebar">
+      <a class="play-btn" href="https://github.com/ViniciusDugue/KilterBoard-AI" target="_blank" rel="noopener">
+        <span class="big">View on GitHub</span>
+        <span class="small">↗ KilterBoard-AI (private)</span>
+      </a>
+      <ul class="info">
+        <li><span>Status</span><b>Conference draft</b></li>
+        <li><span>Role</span><b>Sole author</b></li>
+        <li><span>Domain</span><b>Generative ML · Climbing</b></li>
+        <li><span>Best model</span><b>RNN13 · 4-task</b></li>
+        <li><span>Data</span><b>Custom scraper</b></li>
+      </ul>
+      <div class="tags">
+        <span>PyTorch</span><span>RNN</span><span>Sequence Modeling</span>
+        <span>Climbing</span><span>Web Scraping</span><span>OpenCV</span>
+      </div>
+    </aside>
+
+  </div>
+
+</main>
+
+<footer>
+  © 2026 Vinicius Dugue · <a href="../../index.html">portfolio</a> · <a href="https://github.com/ViniciusDugue" target="_blank" rel="noopener">github</a>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden>
+  <img id="lightbox-img" alt="" />
+</div>
+<script>
+  // Tiny click-to-expand for the inline image references in the how-it-works list
+  const lb = document.getElementById('lightbox');
+  const lbi = document.getElementById('lightbox-img');
+  document.querySelectorAll('.show-img').forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      lbi.src = el.dataset.img;
+      lb.hidden = false;
+    });
+  });
+  lb.addEventListener('click', () => { lb.hidden = true; lbi.src = ''; });
+</script>
+
+</body>
+</html>
