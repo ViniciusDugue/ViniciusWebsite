@@ -110,10 +110,10 @@ nav.top .links a:hover { color: var(--text); }
 section {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 100px 28px;
+  padding: 64px 28px;
 }
 section.embedding-section {
-  padding: 40px 28px;
+  padding: 24px 28px;
 }
 section h2 {
   font-size: 28px; margin: 0 0 8px;
