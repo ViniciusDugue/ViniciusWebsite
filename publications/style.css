@@ -168,6 +168,37 @@ nav.top .brand .dot { color: var(--accent); }
 .abstract a { color: var(--accent-hot); border-bottom: 1px solid rgba(164, 192, 251, 0.4); }
 .abstract a:hover { color: var(--teal); border-bottom-color: var(--teal); }
 
+/* ---------- Poster image ---------- */
+.poster-link {
+  display: block;
+  margin: 16px 0 22px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0a0e16;
+  transition: border-color .2s, transform .15s, box-shadow .2s;
+}
+.poster-link:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 38px rgba(224, 175, 104, 0.18);
+}
+.poster {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.poster-caption {
+  display: block;
+  padding: 10px 14px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  background: var(--panel-2);
+}
+
 /* ---------- Actions ---------- */
 .actions {
   display: flex;
