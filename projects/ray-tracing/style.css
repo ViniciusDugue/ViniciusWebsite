@@ -67,6 +67,16 @@ nav.top .brand .dot { color: var(--amber); }
   height: auto;
   image-rendering: auto;
 }
+.hero-caption {
+  margin: 0;
+  padding: 10px 18px;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  background: var(--panel-2);
+  line-height: 1.5;
+}
+.hero-caption em { color: var(--amber-hot); font-style: italic; }
 .hero-text {
   margin-top: 26px;
   padding: 0 4px;

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Generative Agents — Vinicius Dugue</title>
+<title>Generative Agents: Vinicius Dugue</title>
 <meta name="description" content="An AI-powered survival simulation where every agent runs its own LLM, observing the world via image snapshots to make long-term decisions. Awarded Best Use of AI at the CSULB Senior Project Expo." />
 <link rel="stylesheet" href="style.css" />
 </head>
@@ -17,10 +17,8 @@
 <main class="game">
 
   <header class="cover">
-    <div class="video-hero">
-      <video autoplay loop muted playsinline poster="poster.jpg">
-        <source src="movie.mp4" type="video/mp4" />
-      </video>
+    <div class="cover-static">
+      <img src="poster.jpg" alt="Generative Agents simulation screenshot" />
       <div class="cover-overlay"></div>
       <div class="cover-text">
         <span class="award">★ Best Use of AI · CSULB Senior Project Expo</span>
@@ -34,31 +32,23 @@
 
     <article class="content">
 
+      <section class="demo-video">
+        <h2>Project Demo</h2>
+        <div class="video-wrap">
+          <video controls preload="metadata">
+            <source src="../../assets/Project%20Demo.mkv" />
+            Your browser does not support this video format.
+          </video>
+        </div>
+      </section>
+
       <section class="about">
         <h2>About the project</h2>
         <p><strong>Generative Agents</strong> (a.k.a. Dynamic Digital Agents) is a multi-agent survival simulation built in Unity, where every agent observes the environment through image snapshots and contextual data, then queries its own large language model to make informed long-term decisions about how to survive.</p>
-        <p>The agents have to balance hunger, threats, and exploration in a stylized open world — but instead of hand-tuned heuristics, their behavior emerges from prompting an LLM with what they "see." On top of that, ML-Agents handles a reinforcement learning pass so the agents can learn faster by combining language-model priors with reward signals.</p>
-        <p>Built as a senior capstone with <strong>Carla Zuccarini</strong> and <strong>Nathaniel Fedida</strong>. The project was awarded <em>Best Use of AI</em> at the California State University, Long Beach Senior Project Expo. The next step is packaging the system as a reusable Unity package so other developers can drop LLM-driven agents into their own scenes.</p>
+        <p>The agents have to balance hunger, threats, and exploration in a stylized open world. Instead of hand-tuned heuristics, their behavior emerges from prompting an LLM with what they "see." On top of that, ML-Agents handles a reinforcement learning pass so the agents can learn faster by combining language-model priors with reward signals.</p>
+        <p>Built as a senior capstone with <strong>Hunter Ruebsamen</strong> (team leader), <strong>Carla Zuccarini</strong>, and <strong>Nathaniel Fedida</strong>. The project was awarded <em>Best Use of AI</em> at the California State University, Long Beach Senior Project Expo. The next step is packaging the system as a reusable Unity package so other developers can drop LLM-driven agents into their own scenes.</p>
       </section>
 
-      <section class="meta-grid">
-        <div class="meta-card">
-          <h3>Stack</h3>
-          <p>Unity · C# · ML-Agents · Python · ONNX</p>
-        </div>
-        <div class="meta-card">
-          <h3>Approach</h3>
-          <p>LLM perception · RL training · Multi-agent</p>
-        </div>
-        <div class="meta-card">
-          <h3>Award</h3>
-          <p>Best Use of AI · CSULB Senior Expo</p>
-        </div>
-        <div class="meta-card">
-          <h3>Team</h3>
-          <p>Vinicius Dugue, Carla Zuccarini, Nathaniel Fedida</p>
-        </div>
-      </section>
 
       <section class="how-it-works">
         <h2>How it works</h2>
@@ -66,7 +56,7 @@
           <li><strong>Vision-grounded prompting.</strong> Each agent renders a snapshot of its surroundings each tick, packs it into a structured prompt (alongside hunger, position, recent actions), and asks its LLM what to do next.</li>
           <li><strong>Behavior priors from the LLM.</strong> Outputs are parsed into discrete actions (move, eat, build, attack, flee). The LLM's commonsense gives the agent a head start on long-horizon plans no scripted policy would invent.</li>
           <li><strong>RL fine-tuning via ML-Agents.</strong> A reinforcement loop trains an ONNX policy in parallel with the LLM, so the system can fall back to a fast inference model when latency matters.</li>
-          <li><strong>Configurable environments.</strong> Number of agents, food density, hostile creatures, day/night cycle — all driven from <code>configuration.yaml</code> and TensorBoard-monitored during training.</li>
+          <li><strong>Configurable environments.</strong> Number of agents, food density, hostile creatures, day/night cycle, all driven from <code>configuration.yaml</code> and TensorBoard-monitored during training.</li>
         </ul>
       </section>
 
@@ -77,7 +67,7 @@
             <img src="team-expo.jpg" alt="Vinicius Dugue, Carla Zuccarini, Nathaniel Fedida, and a teammate standing with the Dynamic Digital Agents poster at the CSULB Senior Project Expo" />
           </a>
           <figcaption>
-            The team at the CSULB Senior Project Expo, standing with our <em>Dynamic Digital Agents</em> poster. The project took home <strong>Best Use of AI</strong>.
+            The team at the CSULB Senior Project Expo with our <em>Dynamic Digital Agents</em> poster. Left to right: Vinicius Dugue, Nathaniel Fedida, <strong>Hunter Ruebsamen</strong> (team leader), and Carla Zuccarini. The project took home <strong>Best Use of AI</strong>.
           </figcaption>
         </figure>
       </section>
@@ -88,7 +78,7 @@
           <div class="li-icon">in</div>
           <div class="li-body">
             <p class="li-title">Senior Project Expo · Poster Presentation</p>
-            <p class="li-text">Read the full write-up on LinkedIn — team intro, the demo, and what we learned building LLM-powered agents in Unity.</p>
+            <p class="li-text">Read the full write-up on LinkedIn: team intro, the demo, and what we learned building LLM-powered agents in Unity.</p>
             <a class="li-link" href="https://www.linkedin.com/in/viniciusdugue/" target="_blank" rel="noopener">View post on LinkedIn ↗</a>
           </div>
         </div>
@@ -106,16 +96,11 @@
         <span class="small">↗ Version 1.0 · Windows</span>
       </a>
       <ul class="info">
-        <li><span>Status</span><b>Released</b></li>
-        <li><span>Engine</span><b>Unity</b></li>
-        <li><span>Languages</span><b>C# · Python</b></li>
-        <li><span>Tooling</span><b>ML-Agents · ONNX</b></li>
-        <li><span>Recognition</span><b>Best Use of AI</b></li>
+        <li><span>Stack</span><b>Unity · C# · Python · ONNX</b></li>
+        <li><span>Approach</span><b>LLM perception · RL training</b></li>
+        <li><span>Award</span><b>Best Use of AI · CSULB</b></li>
+        <li><span>Team</span><b>H. Ruebsamen · V. Dugue · C. Zuccarini · N. Fedida</b></li>
       </ul>
-      <div class="tags">
-        <span>LLM Agents</span><span>Reinforcement Learning</span><span>Unity</span>
-        <span>Multi-Agent</span><span>Simulation</span><span>Capstone</span>
-      </div>
     </aside>
 
   </div>

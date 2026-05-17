@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Doom Bowling — Vinicius Dugue</title>
-<meta name="description" content="A DOOM-themed bowling game built from scratch in C++ and Modern OpenGL 3.3 — Phong lighting, PCF soft shadows, tangent-space normal mapping, Bezier animations, and a rigid-body physics tick." />
+<title>Doom Bowling: Vinicius Dugue</title>
+<meta name="description" content="A DOOM-themed bowling game built from scratch in C++ and Modern OpenGL 3.3: Phong lighting, PCF soft shadows, tangent-space normal mapping, Bezier animations, and a rigid-body physics tick." />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -23,7 +23,7 @@
     <div class="hero-text">
       <span class="eyebrow">Graphics · C++ · Modern OpenGL 3.3</span>
       <h1>Doom<br/><span class="alt">Bowling</span></h1>
-      <p class="tagline">A Hell-themed bowling mini-game built from scratch in C++ and Modern OpenGL — inspired by the original <em>DOOM (1993)</em> and wacky bowling-alley cinematics. Knock down all 10 pins to summon the Devil Bowling Ball.</p>
+      <p class="tagline">A Hell-themed bowling mini-game built from scratch in C++ and Modern OpenGL, inspired by the original <em>DOOM (1993)</em> and wacky bowling-alley cinematics. Knock down all 10 pins to summon the Devil Bowling Ball.</p>
     </div>
   </header>
 
@@ -33,11 +33,11 @@
 
       <section class="video">
         <h2>The Hellstrike</h2>
-        <p class="v-lead">A full playthrough of the strike sequence — pins march, missiles fly, and the Devil Bowling Ball rolls in on a Bezier curve to deliver the final blow.</p>
+        <p class="v-lead">A full playthrough of "Hellstrike."</p>
         <div class="video-frame">
           <iframe
             src="https://www.youtube.com/embed/0v3NBRSzgVc"
-            title="Doom Bowling — Hellstrike sequence"
+            title="Doom Bowling: Hellstrike sequence"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
@@ -47,44 +47,25 @@
 
       <section class="about">
         <h2>About the project</h2>
-        <p>Doom Bowling started as the final project for my computer graphics course at CSULB and grew into a sandbox for real-time rendering techniques. The premise is simple — knock down 10 pins — but every shot triggers a chain of choreographed animations, rigid-body physics, and Doom-themed audio cues that take the game somewhere ridiculous.</p>
-        <p>It's written in <strong>C++</strong> against <strong>Modern OpenGL 3.3 core</strong> — no engine, no fixed-function pipeline. The renderer is a two-pass forward setup: a depth-only shadow pass into a custom FBO, then a lit color pass that samples the resulting shadow map with <em>3×3 PCF</em> for soft edges. Models flow in through Assimp; lighting follows the Phong model with tangent-space normal mapping and a specular mask; and a small custom animation framework drives everything from pin tilts to the Devil ball's Bezier-curve entrance.</p>
+        <p>Doom Bowling started as the final project for my computer graphics course at CSULB and grew into a sandbox for real-time rendering techniques. The premise is simple (knock down 10 pins), but every shot triggers a chain of choreographed animations, rigid-body physics, and Doom-themed audio cues that take the game somewhere ridiculous.</p>
+        <p>It's written in <strong>C++</strong> against <strong>Modern OpenGL 3.3 core</strong> with no engine and no fixed-function pipeline. The renderer is a two-pass forward setup: a depth-only shadow pass into a custom FBO, then a lit color pass that samples the resulting shadow map with <em>3×3 PCF</em> for soft edges. Models flow in through Assimp; lighting follows the Phong model with tangent-space normal mapping and a specular mask; and a small custom animation framework drives everything from pin tilts to the Devil ball's Bezier-curve entrance.</p>
       </section>
 
-      <section class="meta-grid">
-        <div class="meta-card">
-          <h3>Language</h3>
-          <p>C++ · GLSL</p>
-        </div>
-        <div class="meta-card">
-          <h3>Graphics API</h3>
-          <p>Modern OpenGL 3.3 core</p>
-        </div>
-        <div class="meta-card">
-          <h3>Libraries</h3>
-          <p>SFML · Assimp · GLM · GLAD</p>
-        </div>
-        <div class="meta-card">
-          <h3>Concepts</h3>
-          <p>Phong · Shadow Maps · PCF · TBN</p>
-        </div>
-      </section>
 
       <section class="features">
-        <h2>What it implements</h2>
+        <h2>Under the Hood</h2>
         <ul>
           <li><strong>Phong reflection model.</strong> Ambient + diffuse + specular per-fragment lighting from a directional light, with material parameters packed into a single uniform.</li>
-          <li><strong>Shadow mapping.</strong> Two-pass forward renderer — a depth-only pass into a custom FBO with color writes disabled, then a lit pass that samples the resulting 2048² depth texture.</li>
+          <li><strong>Shadow mapping.</strong> Two-pass forward renderer: a depth-only pass into a custom FBO with color writes disabled, then a lit pass that samples the resulting 2048² depth texture.</li>
           <li><strong>Soft shadows.</strong> 3×3 percentage-closer filtering with slope-scaled depth bias to kill acne, and an orthographic frustum tightened to the alley to maximize texel density.</li>
           <li><strong>Tangent-space normal mapping.</strong> Per-vertex tangent and bitangent attributes assembled into a TBN matrix in the vertex shader using the inverse-transpose normal matrix.</li>
           <li><strong>Specular masking.</strong> Per-fragment <code>k_s</code> modulated by a dedicated spec map so metallic and matte regions of a texture respond differently.</li>
           <li><strong>Skybox.</strong> Hellish dome rendered around the scene.</li>
-          <li><strong>Custom animation framework.</strong> Composable clips — translation, rotation, move-to, delay, cubic Bezier curves, and sinusoidal bounce — chained per object to drive cinematics.</li>
+          <li><strong>Custom animation framework.</strong> Composable clips (translation, rotation, move-to, delay, cubic Bezier curves, and sinusoidal bounce) chained per object to drive cinematics.</li>
           <li><strong>Hierarchical scene graph.</strong> Object3D parent/child transforms so the Devil ball's tail follows the body automatically.</li>
-          <li><strong>Rigid-body-style physics.</strong> Force accumulation with gravity, drag, mass, and rotational acceleration — knocked-down pins fly off under real forces, not animation.</li>
+          <li><strong>Rigid-body-style physics.</strong> Force accumulation with gravity, drag, mass, and rotational acceleration; knocked-down pins fly off under real forces, not animation.</li>
           <li><strong>Aim-based picking.</strong> Dot-product angle test against world-space pin positions to detect what the camera is looking at when you click.</li>
           <li><strong>Billboarded HUD.</strong> Doom UI plane repositioned and yaw-aligned to the camera every mouse-move event.</li>
-          <li><strong>Multithreaded audio.</strong> SFML sound playback dispatched onto detached threads so death screams, laughs, and Hellstrike explosions overlap without blocking the render loop.</li>
         </ul>
       </section>
 
@@ -95,22 +76,12 @@
         <span class="big">View on GitHub</span>
         <span class="small">↗ Doom-Bowling-OpenGL</span>
       </a>
-      <a class="play-btn play-btn--video" href="https://youtu.be/0v3NBRSzgVc" target="_blank" rel="noopener">
-        <span class="big">Watch on YouTube</span>
-        <span class="small">↗ Hellstrike sequence</span>
-      </a>
       <ul class="info">
         <li><span>Language</span><b>C++ · GLSL</b></li>
-        <li><span>API</span><b>OpenGL 3.3</b></li>
-        <li><span>Engine</span><b>None</b></li>
-        <li><span>Audio</span><b>SFML</b></li>
-        <li><span>Models</span><b>Assimp</b></li>
+        <li><span>API</span><b>OpenGL 3.3 core</b></li>
+        <li><span>Libraries</span><b>Assimp · GLM · GLAD · SFML</b></li>
+        <li><span>Engine</span><b>None · from scratch</b></li>
       </ul>
-      <div class="tags">
-        <span>C++</span><span>OpenGL</span><span>GLSL</span>
-        <span>Shadow Mapping</span><span>PCF</span><span>Normal Mapping</span>
-        <span>Phong</span><span>Physics</span><span>Bezier</span><span>Doom</span>
-      </div>
     </aside>
 
   </div>

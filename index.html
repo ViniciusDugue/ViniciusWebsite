@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Vinicius Dugue — Graphics, ML, and Interactive Systems</title>
+<title>Vinicius Dugue: Graphics, ML, and Interactive Systems</title>
 <meta name="description" content="Personal portfolio of Vinicius Dugue: graphics programming, machine learning, generative agents, and interactive 3D." />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <link rel="stylesheet" href="css/style.css?v=7" />
@@ -36,37 +36,48 @@
 </header>
 
 <section id="about">
-  <h2><span class="num">01.</span>About</h2>
+  <h2><span class="num">00.</span>About</h2>
   <div class="about-grid">
     <div class="bio">
       <img class="headshot" src="assets/headshot.png" alt="Portrait of Vinicius Dugue" />
       <div class="bio-text">
-        <p class="lead">Hi, I'm Vinicius — a CSULB grad building things at the intersection of graphics, simulation, and learning systems.</p>
-        <p>My background spans real-time graphics, physically based rendering, reinforcement learning, and interactive simulations in Unity. I'm drawn to projects where the underlying math becomes visible — where you can <em>see</em> a gradient, a light path, or a vector relationship.</p>
-        <p>Right now I'm focused on generative agents and the visual tools that make their behavior legible. The 3D embedding viewer below is a small example: instead of staring at a 300-dimensional vector, you can rotate the cluster and watch the analogy lines line up.</p>
+        <p class="lead">Hi, I'm Vinicius, a CSULB grad building at the intersection of real-time graphics, simulation, and machine learning.</p>
+        <p>My background spans physically based rendering, GPU programming, reinforcement learning, and Unity game and simulation development. I'm drawn to projects where the underlying math becomes visible: where you can <em>see</em> a light path, a gradient, or a learned policy play out in real time.</p>
+        <p>I also spent time doing research at the Beach CAVE VR Lab at CSULB under Panadda Marayong, Director of the Beach CAVE Lab and Head Chair of the CSULB MAE Department. I helped build a Unity-based UAM flight simulator running in the CAVE system, developed custom C# data-collection tooling, and conducted simulation studies with pilot participants. That work produced two peer-reviewed papers; see my <a href="publications/">publications page</a>.</p>
       </div>
     </div>
     <div class="skills">
       <h3>STACK</h3>
       <ul>
-        <li>C++ · CUDA · OpenGL</li>
-        <li>Unity · C# · Shaders</li>
-        <li>Python · PyTorch · NumPy</li>
-        <li>Three.js · WebGL</li>
-        <li>Reinforcement Learning</li>
-        <li>LLMs &amp; Agent Systems</li>
+        <li>C++ · OpenGL · GLSL</li>
+        <li>Unity · C# · HLSL</li>
+        <li>Python · PyTorch · CUDA</li>
+        <li>FastAPI · Firebase · React</li>
+        <li>ML-Agents · ONNX</li>
       </ul>
     </div>
   </div>
+  <figure class="cave-figure">
+    <img src="assets/cave-vr.jpg" alt="A pilot running a UAM drone simulation inside the CAVE VR system at San Jose State University" />
+    <figcaption>Lab software engineer Kieran Whitney pilots a UAM drone in the Beach CAVE VR Lab at CSULB. Left: MAE Professor Dr. Praveen Shankar. Right: Panadda Marayong, Director of the Beach CAVE Lab and Head Chair of the CSULB MAE Department.</figcaption>
+  </figure>
 </section>
 
 <section id="projects">
-  <h2><span class="num">02.</span>Projects</h2>
-  <p class="lead">Selected work — graphics engines, simulations, ML experiments, and interactive demos. Pulled from <a href="https://github.com/ViniciusDugue" target="_blank" rel="noopener">github.com/ViniciusDugue</a>.</p>
+  <h2><span class="num">01.</span>Projects</h2>
+  <p class="lead">Selected work: graphics engines, simulations, ML experiments, and interactive demos. Pulled from <a href="https://github.com/ViniciusDugue" target="_blank" rel="noopener">github.com/ViniciusDugue</a>.</p>
 
   <div class="proj-grid">
 
-    <a class="proj-card" href="projects/heart-of-the-circus/index.html">
+    <a class="proj-card" href="projects/kilter-ai/index.html" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('projects/kilter-ai/img/climb-1.png'); background-size: contain; background-color: #0a0f17;"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">Generative ML · PyTorch RNN</span>
+        <h3>Kilter AI</h3>
+      </div>
+    </a>
+
+    <a class="proj-card" href="projects/heart-of-the-circus/index.html" target="_blank" rel="noopener">
       <div class="proj-thumb" style="background-image: url('https://img.itch.zone/aW1hZ2UvMzU0NTkzNC8yMTM2MDU0NC5wbmc=/original/ffSOIh.png');"></div>
       <div class="proj-info">
         <span class="proj-tagline">Game · Bullet-Hell TD</span>
@@ -74,7 +85,31 @@
       </div>
     </a>
 
-    <a class="proj-card" href="projects/embedding-viewer/index.html">
+    <a class="proj-card" href="projects/generative-agents/index.html" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('projects/generative-agents/poster.jpg');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">ML / Agents · LLM + Unity</span>
+        <h3>Generative Agents</h3>
+      </div>
+    </a>
+
+    <a class="proj-card" href="projects/doom-bowling/index.html" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('projects/doom-bowling/img/hellstrike-thumbnail.png');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">Graphics · OpenGL · C++</span>
+        <h3>Doom Bowling</h3>
+      </div>
+    </a>
+
+    <a class="proj-card" href="projects/ray-tracing/index.html" target="_blank" rel="noopener">
+      <div class="proj-thumb" style="background-image: url('projects/ray-tracing/img/final-scene.png');"></div>
+      <div class="proj-info">
+        <span class="proj-tagline">Graphics · C++ from scratch</span>
+        <h3>Ray Tracing Engine</h3>
+      </div>
+    </a>
+
+    <a class="proj-card" href="projects/embedding-viewer/index.html" target="_blank" rel="noopener">
       <div class="proj-thumb proj-thumb--embed">
         <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
         <span class="dot d4"></span><span class="dot d5"></span><span class="dot d6"></span>
@@ -83,38 +118,6 @@
       <div class="proj-info">
         <span class="proj-tagline">Interactive · Three.js</span>
         <h3>3D Word Embedding Viewer</h3>
-      </div>
-    </a>
-
-    <a class="proj-card" href="projects/generative-agents/index.html">
-      <div class="proj-thumb" style="background-image: url('projects/generative-agents/poster.jpg');"></div>
-      <div class="proj-info">
-        <span class="proj-tagline">ML / Agents · LLM + Unity</span>
-        <h3>Generative Agents</h3>
-      </div>
-    </a>
-
-    <a class="proj-card" href="projects/kilter-ai/index.html">
-      <div class="proj-thumb" style="background-image: url('projects/kilter-ai/img/climb-1.png'); background-size: contain; background-color: #0a0f17;"></div>
-      <div class="proj-info">
-        <span class="proj-tagline">Generative ML · PyTorch RNN</span>
-        <h3>Kilter AI</h3>
-      </div>
-    </a>
-
-    <a class="proj-card" href="projects/ray-tracing/index.html">
-      <div class="proj-thumb" style="background-image: url('projects/ray-tracing/img/final-scene.png');"></div>
-      <div class="proj-info">
-        <span class="proj-tagline">Graphics · C++ from scratch</span>
-        <h3>Ray Tracing Engine</h3>
-      </div>
-    </a>
-
-    <a class="proj-card" href="projects/doom-bowling/index.html">
-      <div class="proj-thumb" style="background-image: url('projects/doom-bowling/img/hellstrike-thumbnail.png');"></div>
-      <div class="proj-info">
-        <span class="proj-tagline">Graphics · OpenGL · C++</span>
-        <h3>Doom Bowling</h3>
       </div>
     </a>
 
@@ -170,14 +173,14 @@
 </section>
 
 <section id="contact" class="contact">
-  <h2><span class="num">03.</span>Get in touch</h2>
-  <p class="lead">Open to collaborations on graphics, simulation, and agent-based systems. Drop a line.</p>
+  <h2><span class="num">02.</span>Get in touch</h2>
+  <p class="lead">Open to collaborations on computer graphics, Unity game development, and other interesting projects. Drop a line.</p>
   <div class="links">
     <a href="assets/Vinicius_Dugue_Resume.pdf" target="_blank" rel="noopener">resume ↓</a>
     <a href="mailto:vinicius@viniciusdugue.dev">email</a>
     <a href="https://github.com/ViniciusDugue" target="_blank" rel="noopener">github</a>
     <a href="https://vinicinho44.itch.io/" target="_blank" rel="noopener">itch.io</a>
-    <a href="projects/embedding-viewer/index.html">play with the viewer ↗</a>
+    <a href="publications/">publications ↗</a>
   </div>
 </section>
 
@@ -186,6 +189,9 @@
   <div class="hero-viewer">
     <canvas id="hero-canvas"></canvas>
     <div class="hint">drag to rotate · auto-rotates when idle</div>
+  </div>
+  <div class="viewer-link">
+    <a href="projects/embedding-viewer/index.html" target="_blank" rel="noopener">play with the full viewer ↗</a>
   </div>
 </section>
 

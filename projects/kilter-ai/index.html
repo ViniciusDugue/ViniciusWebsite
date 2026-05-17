@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kilter AI — Vinicius Dugue</title>
-<meta name="description" content="An RNN that generates new climbing routes for the Kilter Board, trained on a dataset scraped from the official app." />
+<title>Kilter AI: Vinicius Dugue</title>
+<meta name="description" content="An LSTM that generates new climbing routes for the Kilter Board, trained on over 100,000 climbs pulled from the Kilter Board database." />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -24,7 +24,7 @@
       <div class="cover-text">
         <span class="award">★ IEEE Student Forum · 2024</span>
         <h1>Kilter <span class="alt">AI</span></h1>
-        <p class="tagline">Generating synthetic Kilter Board bouldering climbs with RNNs and multitask learning. Co-authored with Dr. Amir Ghasemkhani at CSULB.</p>
+        <p class="tagline">Generating synthetic Kilter Board bouldering climbs with a multi-task LSTM. Research by Vinicius Dugue &amp; Dr. Amir Ghasemkhani at CSULB.</p>
       </div>
     </div>
   </header>
@@ -35,53 +35,43 @@
 
       <section class="about">
         <h2>About the project</h2>
-        <p>The <strong>Kilter Board</strong> is an LED-lit climbing wall with hundreds of holds — climbers pick a route, the board lights up the relevant holds in colors (start, foot, hand, top), and the climber sends. There are tens of thousands of community-shared routes, but generating <em>new</em> ones is still done by hand.</p>
+        <p>The <strong>Kilter Board</strong> is an LED-lit climbing wall with hundreds of holds. Climbers pick a route, the board lights up the relevant holds in colors (start, foot, hand, top), and the climber sends. There are tens of thousands of community-shared routes, but generating <em>new</em> ones is still done by hand.</p>
         <p><strong>Kilter AI</strong> learns to do this automatically. Given the board layout, a target difficulty, and the wall angle, it generates a brand-new climbing route by predicting which holds to light up and in what role (hand, foot, start, finish).</p>
-        <p>To train it, we built a scraper that pulls real climbs from the Kilter Board mobile app, processes the LED state into a structured dataset, and feeds it through a stack of recurrent models — eventually settling on a multi-task RNN that predicts hold position <em>and</em> hold role jointly. Side experiments include a Markov chain and a VAE for comparison. Work done with <strong>Dr. Amir Ghasemkhani</strong> at CSULB.</p>
+        <figure class="board-image">
+          <img src="img/kilterboard-D-c.jpg" alt="A climber on the Kilter Board LED climbing wall" />
+          <figcaption>The Kilter Board: an adjustable LED climbing training wall.</figcaption>
+        </figure>
       </section>
 
-      <section class="meta-grid">
-        <div class="meta-card">
-          <h3>Model</h3>
-          <p>Multi-task RNN · 4-way joint prediction</p>
-        </div>
-        <div class="meta-card">
-          <h3>Data</h3>
-          <p>Scraped from the Kilter Board app</p>
-        </div>
-        <div class="meta-card">
-          <h3>Variants</h3>
-          <p>RNN · MLP · Markov · VAE</p>
-        </div>
-        <div class="meta-card">
-          <h3>Stack</h3>
-          <p>Python · PyTorch · OpenCV</p>
-        </div>
-      </section>
 
       <section class="how-it-works">
         <h2>How it works</h2>
         <ol>
           <li>
-            <strong>Scrape.</strong> An image-based scraper drives the Kilter Board app, captures the rendered board for thousands of community climbs, and reads the per-hold LED color to recover <em>(row, column, role)</em> for every active hold.
-            <a class="show-img" data-img="img/scraper.png">[show scraper]</a>
+            <strong>Gathering data.</strong> Aurora Climbing, the company behind the Kilter Board app, exposes a public API. We queried it to pull over 300,000 community-generated climbs from the database, including each climb's hold sequence, difficulty rating, and wall angle.
           </li>
           <li>
-            <strong>Index the board.</strong> The physical layout of holds is mapped into a discrete grid so the model can predict "hold #157" instead of pixel coordinates.
-            <a class="show-img" data-img="img/board-setup.png">[show layout]</a>
+            <strong>Preprocessing data.</strong> Each climb is filtered for quality and converted into a sequence of tokens. Every hold is encoded as <em>(row, col, hold class, difficulty value)</em>, and the sequences are padded and packed into GPU-optimized tensors for CUDA-accelerated training.
           </li>
           <li>
-            <strong>Train.</strong> A stack of RNN variants (12 generations from <code>RNN1</code> to <code>RNN15</code>) — each iteration adds a prediction head: position → role → angle → sequence order. Loss is class-weighted to compensate for the heavy imbalance between hand and foot holds.
+            <strong>Training the model.</strong> The core model is an LSTM trained with four simultaneous classification heads, one each for the next hold's row, column, hold class, and difficulty value. Loss is class-weighted to compensate for the imbalance between hand and foot holds. Twelve model generations were trained across the project, each iteration refining the architecture or adding a prediction head.
           </li>
           <li>
-            <strong>Sample.</strong> At inference the model emits a sequence of <em>(position, role)</em> pairs until the route closes on a top hold. The generator is conditioned on a target grade and wall angle.
+            <strong>Generate a climb.</strong> At inference, the model is conditioned on a target grade and wall angle, then emits a sequence of <em>(position, role)</em> pairs autoregressively until the route closes on a top hold.
           </li>
         </ol>
       </section>
 
+      <section class="journey">
+        <h2>The Journey</h2>
+        <p>I've been rock climbing for about 7 years and the Kilter Board has been a big part of that. Back in 2023 I started wondering if I could train a neural network to generate Kilter climbs. The first problem was getting the data. I reached out to Kilter Board directly over email but they were in a legal dispute with the company managing their app and couldn't give me access.</p>
+        <p>I thought that was the end of it. Then I found out that Aurora Climbing, the company that made the Kilter app, had a public API. Through that I was able to pull over 300,000 user-generated climbs from the database and use them to train the model.</p>
+        <p>In October 2024 I got to present the project as a poster at the 2024 IEEE DSAA Conference in San Diego. After that I wanted the model to actually be usable for other climbers, not just sitting in a notebook, so I built a full-stack web app so anyone can generate climbs and save them to their library.</p>
+      </section>
+
       <section class="screens">
         <h2>Generated climbs</h2>
-        <p class="screens-lead">Four routes the model produced. Cyan = handholds, magenta = top, orange = start, green = feet — matching the Kilter Board's own color convention.</p>
+        <p class="screens-lead">Four routes the model produced. Cyan = handholds, magenta = top, orange = start, green = feet, matching the Kilter Board's own color convention.</p>
         <div class="grid">
           <a href="img/climb-1.png" target="_blank" rel="noopener"><img src="img/climb-1.png" alt="Generated climb 1" loading="lazy" /></a>
           <a href="img/climb-5.png" target="_blank" rel="noopener"><img src="img/climb-5.png" alt="Generated climb 5" loading="lazy" /></a>
@@ -94,11 +84,11 @@
         <h2>Conference poster</h2>
         <figure class="poster-figure">
           <a href="img/poster.png" target="_blank" rel="noopener" title="Open poster full-size">
-            <img src="img/poster.png" alt="IEEE Student Forum poster: Generating Synthetic Kilter Board Bouldering Climbs with RNNs and Multitask Learning" />
+            <img src="img/poster.png" alt="IEEE Student Forum poster: Generating Synthetic Kilter Board Bouldering Climbs with a Multi-Task LSTM" />
           </a>
           <figcaption>
             <strong>Generating Synthetic Kilter Board Bouldering Climbs with RNNs and Multitask Learning</strong>
-            — Vinicius Dugue & Amir Ghasemkhani, California State University Long Beach. Presented at the <em>IEEE Student Forum</em>. Click to open full-size.
+            Vinicius Dugue &amp; Amir Ghasemkhani, California State University Long Beach. Presented at the <em>IEEE Student Forum</em>. Click to open full-size.
           </figcaption>
         </figure>
       </section>
@@ -115,16 +105,13 @@
         <span class="small">↗ KilterBoard-AI (private)</span>
       </a>
       <ul class="info">
-        <li><span>Status</span><b>Presented</b></li>
-        <li><span>Venue</span><b>IEEE Student Forum</b></li>
-        <li><span>Co-author</span><b>Dr. A. Ghasemkhani</b></li>
-        <li><span>Institution</span><b>CSULB</b></li>
-        <li><span>Best model</span><b>RNN13 · 4-task</b></li>
+        <li><span>Model</span><b>Multi-task LSTM · 4-task</b></li>
+        <li><span>Data</span><b>Kilter Board API · 300k+ climbs</b></li>
+        <li><span>Variants</span><b>LSTM · MLP · Markov · VAE</b></li>
+        <li><span>Stack</span><b>Python · PyTorch · FastAPI</b></li>
+        <li><span>Venue</span><b>IEEE DSAA 2024</b></li>
+        <li><span>Authors</span><b>V. Dugue · Dr. A. Ghasemkhani</b></li>
       </ul>
-      <div class="tags">
-        <span>PyTorch</span><span>RNN</span><span>Sequence Modeling</span>
-        <span>Climbing</span><span>Web Scraping</span><span>OpenCV</span>
-      </div>
     </aside>
 
   </div>
